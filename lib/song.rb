@@ -9,7 +9,7 @@ class Song
     @@all << self
   end
 
-  def self.all 
+  def self.all
     @@all
   end
 
@@ -23,9 +23,9 @@ class Song
   end
 
   def artist_name=(name)
-    artist = Artist.find_or_create_by_name(name) 
-    self.artist = artist 
-    artist.add_song(self) 
+    artist = Artist.find_or_create_by_name(name)
+    self.artist = artist
+    artist.add_song(self)
   end
 
 end
