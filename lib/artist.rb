@@ -1,27 +1,27 @@
 class Artist
 
-  attr_accessor :name # Create our attribute for the artist's name.
+  attr_accessor :name
 
-  @@all = [] # Create a global variable to store all our our initialized artists.
+  @@all = []
 
-  def initialize(name) # First, we initialize our Artist class with the name attribute.
+  def initialize(name)
     @name = name
-    @@all << self # We take our class instance and push it into our class variable.
+    @@all << self
   end
 
-  def self.all # A class method that will return the contents of our class variable '@@all'
+  def self.all
     @@all
   end
 
-  def songs # Second, we create our 'songs' method for returning all songs associated with a specific artist.
-    Song.all.select {|song| song.artist == self} # We access our 'Song' class and its class variable and use 'select' on it.
-  end # We then set the paramenters to return an array of all the songs whose artist is equal to the instance of the class.
-
-  def add_song(song) # Third, we create 'add_song' to associate a song name with a particular artist.
-    song.artist = self # When we call 'song.artist', we set the result equal to 'self', or the artist on which we are calling the method.
+  def songs
+    Song.all.select {|song| song.artist == self}
   end
 
-  def self.find_or_create_by_name(artist_name) # Fourth, we take our class, the '.all' method,and then look through our data for a name that equals our artist's name.
+  def add_song(song)
+    song.artist = self
+  end
+
+  def self.find_or_create_by_name(artist_name)
     self.all.find {|artist_info| artist_info.name == artist_name} || self.new(artist_name)
   end
 
